@@ -3,6 +3,10 @@
   "displayName": "tasc",
   "description": "Renaine's TASC script support",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Geokureli/Tasc-Syntax.git"
+  },
   "engines": {
     "vscode": "^1.93.0"
   },
