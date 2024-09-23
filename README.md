@@ -18,22 +18,18 @@ Here's an example of some color customizations in your settings.json:
 ```json
 {
     "editor.tokenColorCustomizations": {
-        "variables": "#FFFFFF",
+        "variables": "#EEEEFF",
         "strings": "#FF4080",
-        "keywords": "#FF0000",
         "comments": "#008040",
         "functions": "#88CCFF",
-        "types": "#00FFFF",
         "numbers": "#FFFF00",
         "textMateRules": [
             { "scope": "variable.control.tasc", "settings": { "foreground": "#eeeeff" } },
             { "scope": "keyword.operator", "settings": { "foreground": "#909090" } },
             { "scope": "keyword.control", "settings": { "foreground": "#FF0000" } },
             { "scope": "keyword.other", "settings": { "foreground": "#FF0000" } },
-            { "scope": "variable.parameter", "settings": { "foreground": "#FF8080" } },
             { "scope": "invalid.illegal", "settings": { "foreground": "#ff90d3" } },
-            { "scope": "constant.other.caps", "settings": { "foreground": "#0000FF" } },
-            { "scope": "meta.function-call.arguments", "settings": { "foreground": "#0000FF" } }
+            { "scope": "constant.other.caps", "settings": { "foreground": "#0000FF" } }
         ]
     }
 }
