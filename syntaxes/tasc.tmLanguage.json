@@ -1,0 +1,172 @@
+{
+		"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+		"name": "Tasc",
+		"patterns": [{ "include": "#expression" }],
+		"repository": {
+			"comments": {
+				"patterns": [
+					{
+						"name": "comment.line.double-slash.tasc",
+						"match": "//.*"
+					}
+				]
+			},
+			"expression-bare": {
+				"patterns": [
+					{ "include": "#variables" },
+					{ "include": "#literal" },
+					{ "include": "#string" },
+					{ "include": "#illegal-operator" },
+					{ "include": "#operator" },
+					{ "include": "#round-braces" },
+					{ "include": "#function-call" },
+					{ "include": "#builtin-functions" },
+					{ "include": "#illegal-names" },
+					{ "include": "#constants" }
+				]
+			},
+			"variables": {
+				"patterns": [
+					{ "name": "variable.control.tasc", "match": "\\b[a-zA-Z]+[a-zA-Z0-9-_]*\\b(?=\\.)"}
+				]
+			},
+			"expression": {
+				"patterns": [
+					{ "include": "#comments" },
+					{ "include": "#expression-bare" }
+				]
+			},
+			"constants": {
+				"name": "constant.other.caps.tasc",
+				"match": "\\b([A-Z_]*[A-Z_0-9]*)\\b"
+			},
+			"round-braces": {
+				"begin": "(\\()",
+				"end": "(\\))",
+				"beginCaptures": {
+					"1": { "name": "punctuation.parenthesis.begin.tasc" }
+				},
+				"endCaptures": {
+					"1": { "name": "punctuation.parenthesis.end.tasc" }
+				},
+				"patterns": [{ "include": "#expression" }]
+			},
+			"operator": {
+				"name": "keyword.operator.access.tasc",
+				"match": "\\b(\\.)\\b"
+			},
+			"literal": {
+				"patterns": [
+					{ "name": "constant.language.tasc", "match": "\\b(true|false)\\b" },
+					{ "include": "#number" }
+				]
+			},
+			"number": {
+				"name": "constant.numeric.tasc",
+				"patterns": [
+					{ "include": "#number-dec" },
+					{ "name": "invalid.illegal.name.tasc", "match": "\\b[0-9]+\\w+" }
+				]
+			},
+			"number-dec": {
+				"name": "constant.numeric.dec.tasc",
+				"match": "((?:(?<![_a-zA-Z.\\d-])-\\d+\\.?\\d*)|(?:(?<![_a-zA-Z.\\d-])\\d+\\.?\\d*))(?![_a-zA-Z.\\d])"
+			},
+			"string": {
+				"name": "string.quoted.double.tasc",
+				"begin": "\"",
+				"end": "\"",
+				"patterns": [
+					{
+						"name": "constant.character.escape.tasc",
+						"match": "\\\\."
+					}
+				]
+			},
+			"parameters": {
+				"name": "meta.function.parameters.tasc",
+				"begin": "(\\()",
+				"end": "(\\))",
+				"beginCaptures": {
+					"1": { "name": "punctuation.definition.parameters.begin.tasc" }
+				},
+				"endCaptures": {
+					"1": { "name": "punctuation.definition.parameters.end.tasc" }
+				},
+				"patterns": [
+					{ "include": "#illegal-names" },
+					{
+						"match": "(?x) ([a-zA-Z_]\\w*)\\s* (?: (,) | (?=[)\n]))",
+						"captures": {
+							"1": { "name": "variable.parameter.function.language.tasc" },
+							"2": { "name": "punctuation.seperator.parameters.tasc" }
+						}
+					}
+				]
+			},
+			"function-call": {
+				"name": "meta.function-call.tasc",
+				"begin": "\\b(?=([a-zA-Z_]\\w*)\\s*(\\())",
+				"end": "(\\))",
+				"endCaptures": {
+					"1": { "name": "punctuation.definition.arguments.end.tasc" }
+				},
+				"patterns": [
+					{ "include": "#function-name" },
+					{ "include": "#function-arguments" }
+				]
+			},
+			"function-name": {
+				"patterns": [
+					{ "include": "#builtin-functions" },
+					{
+						"name": "invalid.illegal.name.tasc",
+						"match": "(?<=^|\\.)([a-zA-Z_0-9\\-]+)(?=\\s*\\()"
+					}
+				]
+			},
+			"function-arguments": {
+				"begin": "(\\()",
+				"end": "(?=\\))(?!\\)\\s*\\()",
+				"beginCaptures": {
+					"1": { "name": "punctuation.definition.arguments.begin.tasc" }
+				},
+				"contentName": "meta.function-call.arguments.tasc",
+				"patterns": [
+					{ "name": "punctuation.seperator.arguments.tasc", "match": "(,)" },
+					{ "include": "#illegal-names" },
+					{ "include": "#expression" },
+					{
+						"match": "\\s*(\\))\\s*(\\()",
+						"captures": {
+							"1": { "name": "punctuation.definition.arguments.end.tasc" },
+							"2": { "name": "punctuation.definition.arguments.begin.tasc" }
+						}
+					}
+				]
+			},
+			"builtin-functions": {
+				"patterns": [
+					{ "include": "#illegal-names" },
+					{
+						"name": "support.function.builtin.tasc",
+						"match": "\\b(wait|waitNext|warp|warp_relative|warp_relative_level|warp_node|update|move|moveRelativeX|moveNodeSmart|moveNode|landing_check|anim_check|is_on_screen|is_not_on_screen|aclSet|velY|velX|aclX|aclY|jump|alpha|tween_point|tween_waypoint|giveMoney|glow|state|anim|sound|shake|level_transition|chat|remote_chat|pause|flip|flip_towards_sprite|visible|immovable|moves|visibleOverride|emote|flagBool|item|camera-follow|board-elevator|turn-on-or-off|hud-visiblity|chat-cam-follow|force_end)\\b"
+					}
+				]
+			},
+			"illegal-names": {
+				"name": "invalid.illegal.name.tasc",
+				"match": "(?x)\\b(and | const | func | else | for | if | in | is | not | or | break | continue | return | var | array | while)\\b"
+			},
+			"illegal-operator": {
+				"patterns": [
+					{
+						"name": "invalid.illegal.operator.tasc",
+						"match": "(?x)\\b(and | or | not | in | is | << | >> | & | \\| | \\^ | ~ | \\*\\* | \\* | \\+ | % | / | != | == | >= | <= | < | >)(?!\\s*:)\b"
+					},
+					{ "name": "invalid.illegal.operator.tasc", "match": "!\\b" }
+				]
+			}
+		},
+		"scopeName": "source.tasc"
+	}

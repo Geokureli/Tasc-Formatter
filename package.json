@@ -1,0 +1,25 @@
+{
+  "name": "tasc",
+  "displayName": "tasc",
+  "description": "Renaine's TASC script support",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "tasc",
+      "aliases": ["Tasc", "tasc"],
+      "extensions": [".tasc"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "tasc",
+      "scopeName": "source.tasc",
+      "path": "./syntaxes/tasc.tmLanguage.json"
+    }]
+  }
+}

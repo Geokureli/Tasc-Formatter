@@ -1,0 +1,27 @@
+{ "comments": // TODO: not allowed in tasc files but may be added later
+    { "lineComment": "//"
+    , "blockComment": [ "/*", "*/" ]
+    }
+, "brackets": // symbols used as brackets
+    [ ["(", ")"]
+    ]
+, "autoClosingPairs": // symbols that are auto closed when typing
+    [ ["(", ")"]
+    , ["\"", "\""]
+    , ["'", "'"]
+    ]
+, "surroundingPairs": // symbols that can be used to surround a selection
+    [ ["(", ")"]
+    , ["\"", "\""]
+    , ["'", "'"]
+    ]
+, "folding": // requires comments
+    { "markers":
+        { "start": "^\\s*//\\s*#?region\\b"
+        , "end": "^\\s*//\\s*#?endregion\\b"
+        }
+    }
+, "wordPattern": "(-?\\d*\\.\\d\\w*)|([^\\`\\~\\!\\@\\#\\%\\^\\&\\*\\(\\)\\=\\+\\[\\{\\]\\}\\\\\\|\\;\\:\\'\\\"\\,\\.\\<\\>\\/\\?\\s]+)"
+, "colorizedBracketPairs": [ [ "(", ")" ] ]
+, "onEnterRules": []
+}
