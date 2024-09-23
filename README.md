@@ -2,6 +2,8 @@
 
 Tasc is a simple, proprietary cutscene scripting language for [Renaine](https://renainegame.com/).
 
+This extension was made by modifying [intcode](https://github.com/benediktwerner/intcode) by [benediktwerner](https://github.com/benediktwerner) (Thanks!)
+
 ## Features
 
 This extension covers basic formatting and code hinting in VSCode, the basic structure of a .tasc file is:
