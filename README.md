@@ -17,19 +17,16 @@ There's a small list of valid functions, an invalid function name will highlight
 Here's an example of some color customizations in your settings.json:
 ```json
 {
-    "editor.tokenColorCustomizations": {
-        "variables": "#EEEEFF",
-        "strings": "#FF4080",
-        "comments": "#008040",
-        "functions": "#88CCFF",
-        "numbers": "#FFFF00",
-        "textMateRules": [
-            { "scope": "variable.control.tasc", "settings": { "foreground": "#eeeeff" } },
-            { "scope": "keyword.operator", "settings": { "foreground": "#909090" } },
-            { "scope": "keyword.control", "settings": { "foreground": "#FF0000" } },
-            { "scope": "keyword.other", "settings": { "foreground": "#FF0000" } },
-            { "scope": "invalid.illegal", "settings": { "foreground": "#ff90d3" } },
-            { "scope": "constant.other.caps", "settings": { "foreground": "#0000FF" } }
+    "editor.tokenColorCustomizations":
+    {
+        // normal color settings here
+        "textMateRules": 
+        [
+            // tasc specific colorings here
+            { "scope": "variable.control.tasc", "settings": { "foreground": "#dbb3ff" } },
+            { "scope": "invalid.illegal.tasc", "settings": { "foreground": "#ff90d3" } },
+            { "scope": "constant.other.caps.tasc", "settings": { "foreground": "#00FFFF" } }
+            { "scope": "constant.numeric.dec.tasc", "settings": { "foreground": "#FF00FF" } }
         ]
     }
 }
