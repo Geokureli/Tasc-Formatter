@@ -13,8 +13,8 @@
 			},
 			"expression-bare": {
 				"patterns": [
-					{ "include": "#variables" },
 					{ "include": "#literal" },
+					{ "include": "#variables" },
 					{ "include": "#string" },
 					{ "include": "#illegal-operator" },
 					{ "include": "#operator" },
@@ -27,7 +27,8 @@
 			},
 			"variables": {
 				"patterns": [
-					{ "name": "variable.control.tasc", "match": "\\b[a-zA-Z]+[a-zA-Z0-9-_]*\\b(?=\\.)"}
+					{ "name": "variable.control.tasc", "match": "\\b[a-z]+[a-zA-Z0-9-_]*\\b(?=\\.)" },
+					{ "name": "variable.control.tasc", "match": "(?<=(?:\\(|\\,)\\s*)\\b[a-z]+[a-zA-Z0-9-_]*\\b(?=\\s*(?:\\)|\\,))" }
 				]
 			},
 			"expression": {
@@ -150,7 +151,7 @@
 					{ "include": "#illegal-names" },
 					{
 						"name": "support.function.builtin.tasc",
-						"match": "\\b(wait|waitNext|warp|warp_relative|warp_relative_level|warp_node|update|move|moveRelativeX|moveNodeSmart|moveNode|landing_check|anim_check|is_on_screen|is_not_on_screen|aclSet|velY|velX|aclX|aclY|jump|alpha|tween_point|tween_waypoint|giveMoney|glow|state|anim|sound|shake|level_transition|chat|remote_chat|pause|flip|flip_towards_sprite|visible|immovable|moves|visibleOverride|emote|flagBool|item|camera-follow|board-elevator|turn-on-or-off|hud-visiblity|chat-cam-follow|force_end)\\b"
+						"match": "\\b(warp|warp_relative|warp_relative_level|warp_node|warp_node_if_off_screen|move|moveRelativeX|move_relative_x|move_relative|moveNode|move_node|move_node_smart|turn_move_node_smart|velX|vel_x|velY|vel_y|aclX|acl_x|aclY|acl_y|jump|anim|state|sstate|state_and_wait|sstate_and_wait|chat|temp_chat|remote_chat|flip|flip_towards|flippable|acl|visible|interactable|immovable|moves|camera_follow|emote|alpha|giveMoney|gravity|glow|update|board_elevator|board|turn_on|turnOn|turn_off|turnOff|landed|landing_check|is_touching_ground|anim_is|anim_check|frame_is|frame_check|on_screen|is_on_screen|not_on_screen|is_not_on_screen|tween_point|tween_waypoint|center_on|front_fx|back_fx|on_variable_frame|is_on_variable_frame|not_on_variable_frame|is_not_on_variable_frame|quip|waitNext|waitUntilPlayerIdle|wait|unpause|pause|sound|shake|flash|add_flag|del_flag|main_quest|give_item|take_item|transition_in|transition_out|show_hud|hide_hud|reset_cam|dlg_cam_follow|level_transition|force_end|ctrl_lock|ctrl_unlock|always_active_level|remove_always_active_level)\\b"
 					}
 				]
 			},
